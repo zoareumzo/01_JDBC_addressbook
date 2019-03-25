@@ -1,0 +1,70 @@
+drop sequence address_book_seq;
+create sequence address_book_seq 
+	increment by 1
+	start with 1
+	minvalue 0
+	nocache ;
+	
+	
+drop table address_book purge ;
+create table address_book(
+	num number primary key,
+	name varchar2(20),  
+	age number, 
+	gender char(3),
+	phone_number varchar2(30),
+	email varchar2(30),
+	address varchar2(30),
+	birth date default sysdate
+);
+
+insert into address_book values(address_book_seq.nextval,'신짱구',05, '남', '010-1111-1111', 'zzanggoo@abc', '서울시 노원구', '2015/03/11');
+insert into address_book values(address_book_seq.nextval,'김철수',05, '남', '010-0000-0000', 'chulsoo@ddd', '서울시 용산구', '2015/09/14');
+insert into address_book values(address_book_seq.nextval,'한유리',05, '여', '010-2222-2222', 'yoori@eee', '서울시 강남구', '2015/04/27');
+insert into address_book values(address_book_seq.nextval,'이훈이',05, '남', '010-3333-4444', '2hoon2@abc', '서울시 강남구', '2015/01/14');
+insert into address_book values(address_book_seq.nextval,'맹구',05, '남', '010-4444-4444', 'googoo@abc', '서울시 노원구', '2015/12/11');
+
+commit ;
+select * from address_book;
+
+
+[JDBC프로그래밍 단계]
+0.ojdbc6.jar
+
+1.드라이버 로드
+
+2.계정에 접속
+
+3.sql문 분석
+	?:set~ 
+4.sql실행
+
+5.close
+
+
+
+
+DTO(Data Transfer Object)란? 
+- 데이터의 전달을 위해 만들어진 오브젝트
+- 데이터를 담을 private 변수와 그변수를 조작할수 있는 getter, setter 메소드로 구성되어 있다.
+- DTO를 통해서 데이터를 가져올 경우 데이터의 무결성을 보장 할 수 있다.
+- bean 혹은 VO라고 부르기도 한다.
+
+
+DAO(Data Access Objects)란? 
+- DB를 사용해 데이터를 조회하거나 조작하는 기능을 전담하도록 만든 오브젝트
+- 실질적인 DB와의 연결을 담당하는 일을 가진 객체
+- 저장소에 데이터를 입력, 조회, 수정, 삭제 등 처리를 담당.
+
+
+
+
+
+
+
+
+
+
+
+
+
